@@ -1,0 +1,10 @@
+[Unit]
+Description=Runs the weathercam service at a 15m interval
+Requires=weathercam.service
+
+[Timer]
+OnCalendar=*:0/15
+Unit=weathercam.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Upload weather cam to wunderground
+Wants=weathercam.timer
+
+[Service]
+Type=oneshot
+ExecStart=python3 /home/pi/pi_weather/weathercam.py
+
+[Install]
+WantedBy=multi-user.target
