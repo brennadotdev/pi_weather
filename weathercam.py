@@ -18,7 +18,6 @@ with PiCamera() as camera:
     camera.resolution = (1024, 768)
     sleep(2)
     camera.capture(fileName)
-    pass
 
 with open(fileName, 'rb') as file:
     with FTP("webcam.wunderground.com", user=args.deviceid, passwd=args.uploadkey) as ftp:
