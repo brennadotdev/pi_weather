@@ -12,14 +12,18 @@ parser.add_argument('--uploadkey', type=str, help='Your wunderground upload key'
 args = parser.parse_args()
 fileName = 'still.jpg'
 
+print('Preparing camera...')
 with PiCamera() as camera:
     camera.vflip = args.vflip
     camera.hflip = args.hflip
     camera.resolution = (1024, 768)
     sleep(2)
     camera.capture(fileName)
+print('Image saved')
 
+print('Opening file and ftp connection...')
 with open(fileName, 'rb') as file:
     with FTP("webcam.wunderground.com", user=args.deviceid, passwd=args.uploadkey) as ftp:
         ftp.cwd('/')
         ftp.storbinary('STOR image.jpg', file)
+print('Upload complete')
