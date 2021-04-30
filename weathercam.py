@@ -1,6 +1,6 @@
 import argparse
 from time import sleep
-import picamera
+from picamera import PiCamera
 from ftplib import FTP
 
 parser = argparse.ArgumentParser(description='Use the attached camera to take a photo and upload it to wunderground')
