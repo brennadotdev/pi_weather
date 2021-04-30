@@ -22,4 +22,5 @@ with PiCamera() as camera:
 
 with open(fileName, 'rb') as file:
     with FTP("webcam.wunderground.com", user=args.deviceid, passwd=args.uploadkey) as ftp:
-        ftp.storbinary(fileName, file)
+        ftp.cwd('/')
+        ftp.storbinary('STOR image.jpg', file)
